@@ -78,7 +78,7 @@ public class Hogares extends AppCompatActivity {
                 dirHogar.setText(hogarSeleccionado.getDireccion());
                 nomHogar.setText(hogarSeleccionado.getNombre());
                 comHogar.setText(hogarSeleccionado.getComentario());
-                for (int i = 0; i <= spinnerVecindario.getCount(); i++){
+                for (int i = 0; i <= spinnerVecindario.getCount()+1; i++){
                     if (spinnerVecindario.getItemAtPosition(i).toString().equals(hogarSeleccionado.getVecindario().getNombre())){
                         spinnerVecindario.setSelection(i);
                     }
@@ -158,7 +158,7 @@ public class Hogares extends AppCompatActivity {
                         String comentario= comHogar.getText().toString();
                         String vecindario = spinnerVecindario.getSelectedItem().toString();
 
-                        if (nombre.equals("") || direccion.equals("") || comentario.equals("")){
+                        if (nombre.equals("") || direccion.equals("") || comentario.equals("") || vecindario.equals("Vecindario")){
                             validacion();
                         }
                         else {
@@ -248,10 +248,9 @@ public class Hogares extends AppCompatActivity {
         } else if (direccion.equals("")) {
             dirHogar.setError("Requerido");
         } else if (comentario.equals("")) {
-        dirHogar.setError("Requerido");
-            dirHogar.setError("Requerido");
-        }else if (spinnerVecindario.equals("Vecindario")) {
-            Toast.makeText(this,"Debe seleccionar el vecindario", Toast.LENGTH_LONG).show();
+        comHogar.setError("Requerido");
+        }else if (spinnerVecindario.getSelectedItem().toString().equals("Vecindario")) {
+            Toast.makeText(Hogares.this,"Debe seleccionar el vecindario", Toast.LENGTH_LONG).show();
         }
 
     }
