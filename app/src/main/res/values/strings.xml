@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MiVecindario</string>
+    <string name="title_activity_inicio_sesion">InicioSesion</string>
+    <string name="textview">TextView</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Apellido">Apellido</string>
+    <string name="Correo">Correo</string>
+    <string name="Password">Password</string>
+    <string name="title_activity_iniciar_sesion">IniciarSesion</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="Telefono">Telefono</string>
+    <string name="Direccion">Direccion</string>
+    <string name="Tipo">Tipo</string>
+    <string name="Comentario">Comentario</string>
+    <string name="Usuario">Usuario</string>
+    <string name="Vecindario">Vecindario</string>
+
+</resources>

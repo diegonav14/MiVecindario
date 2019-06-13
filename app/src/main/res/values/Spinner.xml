@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Tipo">
+        <item name="Tipo">Tipo</item>
+        <item name="PresidenteJV">Presidente junta vecinos</item>
+        <item name="Jefehogar">Jefe de hogar</item>
+        <item name="Miembrohogar">Miembro de hogar</item>
+    </string-array>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "527199712101",
+    "firebase_url": "https://fir-vecindario.firebaseio.com",
+    "project_id": "fir-vecindario",
+    "storage_bucket": "fir-vecindario.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527199712101:android:05b8faed7c28217e",
+        "android_client_info": {
+          "package_name": "com.example.mivecindario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527199712101-vnhvdeumh9i5m82nd6m5mol70cdekvmm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mivecindario",
+            "certificate_hash": "01de7f46d2ab97358eef466b1c5510089b2a3ac3"
+          }
+        },
+        {
+          "client_id": "527199712101-nr49gelmp9bppfnilp9pa7qqv1t1jvmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMn_5uUV9tl6WX-FUtRzs6Ww8HJ1LyYpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527199712101-nr49gelmp9bppfnilp9pa7qqv1t1jvmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
