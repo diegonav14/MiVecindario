@@ -69,10 +69,10 @@
         android:layout_marginEnd="50dp"
         android:background="#BEF781"
         android:onClick="irMapa"
-        android:text="Hogares"
+        android:text="Mapas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnUsuario" />
+        app:layout_constraintTop_toBottomOf="@id/btnHogar" />
 
     <TextView
         android:id="@+id/textView"
