@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:id="@+id/llRight"
             android:layout_width="match_parent"
@@ -40,29 +41,74 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/llRight"
+                android:layout_alignTop="@+id/llRight">
 
                 <TextView
                     android:id="@+id/txt_listaEvento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Eventos"
-                    android:textSize="20dp"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
-                    />
+                    android:text="Eventos"
+                    android:textSize="20sp" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <ListView
-                android:id="@+id/lv_eventos"
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="350dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    >
+
+                    <ListView
+                        android:id="@+id/lv_eventos"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp"
+                        android:layout_alignStart="@+id/llRight"
+                        android:layout_alignTop="@+id/llRight"></ListView>
+                </LinearLayout>
+
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/txt_comentarioEvento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/Comentario"
+                    android:inputType="textMultiLine"
+                    android:paddingTop="15dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+            <Button
+                android:id="@+id/btnEventos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/llRight"
-                android:layout_alignTop="@+id/llRight">
+                android:text="Ingresar evento"
+                android:textSize="10dp" />
 
-            </ListView>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -73,40 +119,8 @@
             android:layout_alignLeft="@id/llLeft"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="150dp"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txt_comentarioEvento"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/Comentario"
-                    android:inputType="textMultiLine"
-                    android:paddingTop="15dp"
-                    />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spEvento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </Spinner>
-
-
-            <Button
-                android:id="@+id/btnEventos"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:textSize="10dp"
-                android:layout_gravity="left"
-                android:text="Ingresar evento" />
 
 
         </LinearLayout>
-
     </RelativeLayout>
-
 </LinearLayout>

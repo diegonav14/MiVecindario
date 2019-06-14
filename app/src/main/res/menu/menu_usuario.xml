@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/ic_session_out"
+        android:titleCondensed="CerrarSesion"
+        android:id="@+id/cerrarSesion"
+        android:title="Editar hogar"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/editarHogar"
+        android:title="Editar hogar"
+        android:iconTint="@color/cardview_light_background"
+        />
+    <item
+        android:id="@+id/datosUsuario"
+        android:title="Mis datos"
+        android:iconTint="@color/cardview_light_background"
+        />
+    <item
+        android:id="@+id/verVecindario"
+        android:title="Ver vecindario"
+        android:iconTint="@color/cardview_light_background"
+        />
+</menu>

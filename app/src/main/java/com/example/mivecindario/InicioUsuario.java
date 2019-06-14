@@ -59,8 +59,6 @@ public class InicioUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_usuario);
 
-
-
         tpUsuario= findViewById(R.id.txt_tipoUsuario);
         comentarioEvento = findViewById(R.id.txt_comentarioEvento);
         tipoEvento = findViewById(R.id.spEvento);
@@ -181,7 +179,7 @@ public class InicioUsuario extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_usuario,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -190,20 +188,20 @@ public class InicioUsuario extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.icon_add:{
+            case R.id.verVecindario:{
 
                 break;
             }
 
-            case R.id.icon_save:{
+            case R.id.editarHogar:{
                 break;
             }
 
-            case R.id.icon_delete:{
+            case R.id.datosUsuario:{
                 break;
             }
 
-           case R.id.icon_login:{
+           case R.id.cerrarSesion:{
                SharedPreferences preferecias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
                SharedPreferences.Editor editor = preferecias.edit();
                editor.clear();
