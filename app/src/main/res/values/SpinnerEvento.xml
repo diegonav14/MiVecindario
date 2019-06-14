@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="TipoEvento">
+        <item name="Tipo">Tipo</item>
+        <item name="Venta">Venta</item>
+        <item name="Alerta">Alerta</item>
+        <item name="Junta">Junta</item>
+        <item name="Cumpleanos">Cumpleaños</item>
+        <item name="Bingo">Bingo</item>
+    </string-array>
+</resources>
