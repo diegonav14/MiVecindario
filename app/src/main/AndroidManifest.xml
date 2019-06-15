@@ -17,7 +17,7 @@
         <activity android:name=".Eventos" />
         <activity android:name=".Hogares" />
         <activity android:name=".Vecindarios" />
-        <activity android:name=".Inicio" />
+        <activity android:name=".Inicio"/>
         <activity
             android:name=".IniciarSesion"
             android:label="@string/title_activity_iniciar_sesion"

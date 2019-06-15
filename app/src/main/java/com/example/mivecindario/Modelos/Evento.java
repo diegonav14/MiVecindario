@@ -1,11 +1,13 @@
 package com.example.mivecindario.Modelos;
 
-public class Eventos {
+public class Evento {
 
+    private String uid;
     private String tipo;
     private String comentario;
+    private Usuario usuario;
 
-    public Eventos (){
+    public Evento(){
 
     }
 
@@ -29,4 +31,22 @@ public class Eventos {
     public String toString() {
         return comentario;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
 }
