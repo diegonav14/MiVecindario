@@ -4,18 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#c9e265"
     android:orientation="vertical"
     tools:context=".InicioUsuario">
 
     <include
         android:id="@id/toolbar"
         layout="@layout/toolbar"></include>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AHORA ?" />
 
 
     <android.support.design.widget.TextInputLayout
