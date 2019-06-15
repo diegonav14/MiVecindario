@@ -6,14 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.example.mivecindario.Administrador.InicioAdmin;
 import com.example.mivecindario.Modelos.Administrador;
 import com.example.mivecindario.Modelos.Usuario;
 import com.google.firebase.FirebaseApp;
@@ -55,7 +51,7 @@ public class IniciarSesion extends AppCompatActivity  {
 
             SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
             if (preferencias.contains("nombreAdmin") && preferencias.contains("apellidoAdmin")){
-                Intent intent = new Intent(this,Inicio.class);
+                Intent intent = new Intent(this, InicioAdmin.class);
                 startActivity(intent);
             }else if(preferencias.contains("nombreUsuario") && preferencias.contains("apellidoUsuario")){
                 Intent intent = new Intent(this,InicioUsuario.class);
@@ -70,12 +66,30 @@ public class IniciarSesion extends AppCompatActivity  {
         }
 
 
+        private void validacion() {
 
-        public void IniciarSesion ( View v) {
+            String correo = editTextCorreo.getText().toString();
+            String pass = editTextPass.getText().toString();
+
+
+            if (correo.equals("")) {
+                editTextCorreo.setError("Requerido");
+            } else if (pass.equals("")){
+                editTextPass.setError("Requerido");
+            }
+
+
+        }
+
+        public void IniciarSesion (final View v) {
 
             databaseReference.child("Administrador").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    if (editTextCorreo.getText().equals("") || editTextPass.getText().equals("")){
+                        validacion();
+                    }
 
                     for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
 
@@ -84,7 +98,7 @@ public class IniciarSesion extends AppCompatActivity  {
                         String passAdmin = editTextPass.getText().toString();
 
                         if (correoAdmin.equals(admin.getCorreo()) && passAdmin.equals(admin.getPassword())){
-                            Intent intentAdmin = new Intent(IniciarSesion.this, Inicio.class);
+                            Intent intentAdmin = new Intent(IniciarSesion.this, InicioAdmin.class);
                             SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferencias.edit();
                             editor.putString("nombreAdmin", admin.getNombre());
@@ -92,7 +106,6 @@ public class IniciarSesion extends AppCompatActivity  {
                             editor.commit();
                             startActivity(intentAdmin);
                         }
-
                     }
                 }
                 @Override

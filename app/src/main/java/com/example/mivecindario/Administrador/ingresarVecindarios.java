@@ -1,4 +1,4 @@
-package com.example.mivecindario;
+package com.example.mivecindario.Administrador;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -13,9 +13,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
-import com.example.mivecindario.Modelos.Usuario;
 import com.example.mivecindario.Modelos.Vecindario;
-import com.google.firebase.FirebaseApp;
+import com.example.mivecindario.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Vecindarios extends AppCompatActivity {
+public class ingresarVecindarios extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -86,7 +85,7 @@ public class Vecindarios extends AppCompatActivity {
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
                     Vecindario v = objSnapshot.getValue(Vecindario.class);
                     listaVecindario.add(v);
-                    arrayAdapterVecindario = new ArrayAdapter<Vecindario>(Vecindarios.this, android.R.layout.simple_list_item_1, listaVecindario);
+                    arrayAdapterVecindario = new ArrayAdapter<Vecindario>(ingresarVecindarios.this, android.R.layout.simple_list_item_1, listaVecindario);
                     listV_vecindario.setAdapter(arrayAdapterVecindario);
                 }
 

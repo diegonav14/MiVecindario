@@ -1,9 +1,11 @@
-package com.example.mivecindario;
+package com.example.mivecindario.Administrador;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Eventos extends AppCompatActivity {
+import com.example.mivecindario.R;
+
+public class agregarEventos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#c9e265"
-    tools:context=".Inicio">
+    tools:context=".Administrador.InicioAdmin">
 
     <include
         android:id="@id/toolbar"

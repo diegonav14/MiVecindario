@@ -12,12 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InicioUsuario"></activity>
-        <activity android:name=".MapaVecindario" />
-        <activity android:name=".Eventos" />
-        <activity android:name=".Hogares" />
-        <activity android:name=".Vecindarios" />
-        <activity android:name=".Inicio"/>
+        <activity android:name=".datosUsuario"></activity>
+        <activity android:name=".editarHogar" />
+        <activity android:name=".verVecindario" />
+        <activity android:name=".InicioUsuario" />
+        <activity android:name=".Administrador.ingresarMapaVecindario" />
+        <activity android:name=".Administrador.agregarEventos" />
+        <activity android:name=".Administrador.agregarHogares" />
+        <activity android:name=".Administrador.ingresarVecindarios" />
+        <activity android:name=".Administrador.InicioAdmin" />
         <activity
             android:name=".IniciarSesion"
             android:label="@string/title_activity_iniciar_sesion"
@@ -28,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Usuarios" />
+        <activity android:name=".Administrador.ingresarUsuarios" />
     </application>
 
 </manifest>

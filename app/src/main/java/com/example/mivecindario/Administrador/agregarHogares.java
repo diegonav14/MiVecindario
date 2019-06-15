@@ -1,4 +1,4 @@
-package com.example.mivecindario;
+package com.example.mivecindario.Administrador;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.mivecindario.Modelos.Hogar;
 import com.example.mivecindario.Modelos.Vecindario;
+import com.example.mivecindario.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Hogares extends AppCompatActivity {
+public class agregarHogares extends AppCompatActivity {
 
     Toolbar toolbar;
 
@@ -104,7 +105,7 @@ public class Hogares extends AppCompatActivity {
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
                     Hogar h = objSnapshot.getValue(Hogar.class);
                     listaHogares.add(h);
-                    arrayAdapterHogar = new ArrayAdapter<Hogar>(Hogares.this, android.R.layout.simple_list_item_1, listaHogares);
+                    arrayAdapterHogar = new ArrayAdapter<Hogar>(agregarHogares.this, android.R.layout.simple_list_item_1, listaHogares);
                     listV_hogar.setAdapter(arrayAdapterHogar);
                 }
 
@@ -174,7 +175,7 @@ public class Hogares extends AppCompatActivity {
                                 }
                             }
                             databaseReference.child("Hogar").child(h.getUid()).setValue(h);
-                            Toast.makeText(Hogares.this, "Agregado", Toast.LENGTH_LONG).show();
+                            Toast.makeText(agregarHogares.this, "Agregado", Toast.LENGTH_LONG).show();
                             limpiarCajas();
                         }
                     }
@@ -205,7 +206,7 @@ public class Hogares extends AppCompatActivity {
                             }
                         }
                         databaseReference.child("Hogar").child(h.getUid()).setValue(h);
-                        Toast.makeText(Hogares.this,"Guardar", Toast.LENGTH_LONG).show();
+                        Toast.makeText(agregarHogares.this,"Guardar", Toast.LENGTH_LONG).show();
                         limpiarCajas();
                     }
 
@@ -250,7 +251,7 @@ public class Hogares extends AppCompatActivity {
         } else if (comentario.equals("")) {
         comHogar.setError("Requerido");
         }else if (spinnerVecindario.getSelectedItem().toString().equals("Vecindario")) {
-            Toast.makeText(Hogares.this,"Debe seleccionar el vecindario", Toast.LENGTH_LONG).show();
+            Toast.makeText(agregarHogares.this,"Debe seleccionar el vecindario", Toast.LENGTH_LONG).show();
         }
 
     }

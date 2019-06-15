@@ -1,4 +1,4 @@
-package com.example.mivecindario;
+package com.example.mivecindario.Administrador;
 
 
 import android.support.annotation.NonNull;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.mivecindario.Modelos.Hogar;
 import com.example.mivecindario.Modelos.Usuario;
-import com.example.mivecindario.Modelos.Vecindario;
+import com.example.mivecindario.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Usuarios extends AppCompatActivity {
+public class ingresarUsuarios extends AppCompatActivity {
 
     private List<Usuario> listaUsuario = new ArrayList<Usuario>();
     private List<String> listaHogar = new ArrayList<String>();
@@ -37,7 +37,6 @@ public class Usuarios extends AppCompatActivity {
 
     EditText nomUsuario, apeUsuario, corUsuario, passUsuario, telUsuario, dirUsuario;
     ListView listV_usuarios;
-
 
     Spinner spinnerTipo,spinnerHogar;
 
@@ -111,7 +110,7 @@ public class Usuarios extends AppCompatActivity {
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
                     Usuario u = objSnapshot.getValue(Usuario.class);
                     listaUsuario.add(u);
-                    arrayAdapterUsuario = new ArrayAdapter<Usuario>(Usuarios.this, android.R.layout.simple_list_item_1, listaUsuario);
+                    arrayAdapterUsuario = new ArrayAdapter<Usuario>(ingresarUsuarios.this, android.R.layout.simple_list_item_1, listaUsuario);
                     listV_usuarios.setAdapter(arrayAdapterUsuario);
                 }
 
@@ -232,7 +231,7 @@ public class Usuarios extends AppCompatActivity {
                             }
                         }
                         databaseReference.child("Usuario").child(u.getUid()).setValue(u);
-                        Toast.makeText(Usuarios.this,"Guardar", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ingresarUsuarios.this,"Guardar", Toast.LENGTH_LONG).show();
                         limpiarCajas();
                     }
 

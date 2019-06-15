@@ -1,4 +1,4 @@
-package com.example.mivecindario;
+package com.example.mivecindario.Administrador;
 
 
 import android.content.Context;
@@ -10,14 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 
+import com.example.mivecindario.IniciarSesion;
+import com.example.mivecindario.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class Inicio extends AppCompatActivity {
+public class InicioAdmin extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -48,22 +49,22 @@ public class Inicio extends AppCompatActivity {
 
 
     public void irUsuario (View v){
-        Intent intent = new Intent(Inicio.this, Usuarios.class);
+        Intent intent = new Intent(InicioAdmin.this, ingresarUsuarios.class);
         startActivity(intent);
     }
 
     public void irVecindario (View v){
-        Intent intent = new Intent(Inicio.this, Vecindarios.class);
+        Intent intent = new Intent(InicioAdmin.this, ingresarVecindarios.class);
         startActivity(intent);
     }
 
     public void irHogares (View v){
-        Intent intent = new Intent(Inicio.this, Hogares.class);
+        Intent intent = new Intent(InicioAdmin.this, agregarHogares.class);
         startActivity(intent);
     }
 
     public void irMapa (View v){
-        Intent intent = new Intent(Inicio.this, MapaVecindario.class);
+        Intent intent = new Intent(InicioAdmin.this, ingresarMapaVecindario.class);
         startActivity(intent);
     }
 
@@ -102,7 +103,7 @@ public class Inicio extends AppCompatActivity {
                 SharedPreferences.Editor editor = preferencias.edit();
                 editor.clear();
                 editor.apply();
-                Intent intent = new Intent(this,IniciarSesion.class);
+                Intent intent = new Intent(this, IniciarSesion.class);
                 startActivity(intent);
             }
             default:break;

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".editarHogar">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txt_comentarioUsuarioHogar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Comentario"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txt_direccionHogarUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Direccion"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txt_nombreUsuarioHogar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Nombre"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modificar Hogar"
+        android:layout_gravity="center"
+        android:onClick="modificarHogar"/>
+
+</LinearLayout>

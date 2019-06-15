@@ -14,5 +14,6 @@
     <string name="Comentario">Comentario</string>
     <string name="Usuario">Usuario</string>
     <string name="Vecindario">Vecindario</string>
+    <string name="modificar_mis_datos">Modificar mis datos</string>
 
 </resources>
