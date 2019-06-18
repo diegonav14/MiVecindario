@@ -54,6 +54,8 @@ public class datosUsuario extends AppCompatActivity {
         cargarPreferencias();
     }
 
+
+
     public void modificarDatosUsuario(View v) {
 
         String nombre = nomUsuario.getText().toString();

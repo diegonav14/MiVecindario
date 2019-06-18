@@ -132,6 +132,7 @@ public class editarHogar extends AppCompatActivity {
                 editor.apply();
                 Intent intent = new Intent(this,IniciarSesion.class);
                 startActivity(intent);
+                finish();
             }
             default:break;
 

@@ -13,6 +13,14 @@
         layout="@layout/toolbar"
         />
 
+
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="left">
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -22,9 +30,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Comentario"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            />
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -36,9 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Direccion"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            />
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -50,9 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Nombre"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            />
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -61,5 +69,7 @@
         android:text="Modificar Hogar"
         android:layout_gravity="center"
         android:onClick="modificarHogar"/>
+
+    </LinearLayout>
 
 </LinearLayout>

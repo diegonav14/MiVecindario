@@ -53,9 +53,11 @@ public class IniciarSesion extends AppCompatActivity  {
             if (preferencias.contains("nombreAdmin") && preferencias.contains("apellidoAdmin")){
                 Intent intent = new Intent(this, InicioAdmin.class);
                 startActivity(intent);
+                finish();
             }else if(preferencias.contains("nombreUsuario") && preferencias.contains("apellidoUsuario")){
-                Intent intent = new Intent(this,InicioUsuario.class);
+                Intent intent = new Intent(this, ingresarEvento.class);
                 startActivity(intent);
+                finish();
             }
         }
 
@@ -64,7 +66,6 @@ public class IniciarSesion extends AppCompatActivity  {
             firebaseDatabase = FirebaseDatabase.getInstance();
             databaseReference = firebaseDatabase.getReference();
         }
-
 
         private void validacion() {
 
@@ -81,7 +82,7 @@ public class IniciarSesion extends AppCompatActivity  {
 
         }
 
-        public void IniciarSesion (final View v) {
+        public void IniciarSesion (View v) {
 
             databaseReference.child("Administrador").addValueEventListener(new ValueEventListener() {
                 @Override
@@ -105,6 +106,7 @@ public class IniciarSesion extends AppCompatActivity  {
                             editor.putString("apellidoAdmin",admin.getApellido());
                             editor.commit();
                             startActivity(intentAdmin);
+                            finish();
                         }
                     }
                 }
@@ -124,7 +126,7 @@ public class IniciarSesion extends AppCompatActivity  {
                         String pass = editTextPass.getText().toString();
 
                         if (correo.equals(user.getCorreo()) && pass.equals(user.getPassword())){
-                            Intent intent = new Intent (IniciarSesion.this, InicioUsuario.class);
+                            Intent intent = new Intent (IniciarSesion.this, ingresarEvento.class);
                             SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferencias.edit();
                             editor.putString("nombreUsuario", user.getNombre());
@@ -132,6 +134,7 @@ public class IniciarSesion extends AppCompatActivity  {
                             editor.putString("tipoUsuario", user.getTipo());
                             editor.commit();
                             startActivity(intent);
+                            finish();
                         }
                     }
                 }

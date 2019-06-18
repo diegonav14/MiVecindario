@@ -15,5 +15,9 @@
     <string name="Usuario">Usuario</string>
     <string name="Vecindario">Vecindario</string>
     <string name="modificar_mis_datos">Modificar mis datos</string>
+    <string name="ingresar_evento">Ingresar evento</string>
+    <string name="eventos">Eventos</string>
+    <string name="Fecha">Fecha</string>
+    <string name="participar">Participar</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.mivecindario;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,9 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mivecindario.Modelos.Evento;
-import com.example.mivecindario.Modelos.Hogar;
 import com.example.mivecindario.Modelos.Usuario;
-import com.example.mivecindario.Modelos.Vecindario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,38 +32,53 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class InicioUsuario extends AppCompatActivity {
+public class ingresarEvento extends AppCompatActivity {
 
     Toolbar toolbar;
 
     String tipoUsuario,nmUsuario,apUsuario;
 
-    EditText comentarioEvento;
+    EditText comentarioEvento,fechaEvento;
 
-    Button btnEvento;
+    Button btnEvento,btnAsistir;
 
-    ListView lv_Eventos;
+    ListView lv_Eventos,lv_asistentes;
+
+
 
     private List<Evento> listaEventos = new ArrayList<Evento>();
+    private  List<Usuario> listaAsistentes = new ArrayList<Usuario>();
     ArrayAdapter<Evento> arrayAdapteEvento;
+
+
+    ArrayAdapter<Usuario> arrayAdapteAsistente;
 
     Spinner tipoEvento;
 
-    TextView tpUsuario;
+    TextView txt_tipoEvento,txt_comentarioEvento,txt_usuarioEvento,txt_fechaEvento;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    Evento eventoSeleccionado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicio_usuario);
+        setContentView(R.layout.activity_ingresar_evento);
 
-        tpUsuario= findViewById(R.id.txt_tipoUsuario);
         comentarioEvento = findViewById(R.id.txt_comentarioEvento);
+        fechaEvento = findViewById(R.id.txt_fechaEvento);
         tipoEvento = findViewById(R.id.spEvento);
         btnEvento = findViewById(R.id.btnEventos);
+        btnAsistir = findViewById(R.id.btnAsistir);
         lv_Eventos = findViewById(R.id.lv_eventos);
+        lv_asistentes = findViewById(R.id.lv_asistentes);
+        txt_comentarioEvento = findViewById(R.id.txt_comentarioEventoSeleccionado);
+        txt_tipoEvento = findViewById(R.id.txt_tipoEventoSeleccionado);
+        txt_usuarioEvento = findViewById(R.id.txt_usuarioEventoSeleccionado);
+        txt_fechaEvento = findViewById(R.id.txt_fechaEventoSeleccionado);
+
 
         ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(this,R.array.TipoEvento, android.R.layout.simple_spinner_dropdown_item);
 
@@ -77,8 +92,57 @@ public class InicioUsuario extends AppCompatActivity {
         listarDatos();
         tiposUsuarios();
 
+        lv_Eventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                eventoSeleccionado = (Evento) parent.getItemAtPosition(position);
+                txt_comentarioEvento.setText(eventoSeleccionado.getComentario());
+                txt_tipoEvento.setText(eventoSeleccionado.getTipo());
+                txt_fechaEvento.setText(eventoSeleccionado.getFecha());
+                txt_usuarioEvento.setText(eventoSeleccionado.getUsuario().getNombre()+" "+eventoSeleccionado.getUsuario().getApellido());
+                btnAsistir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    participar();
+                    }
+                });
+
+                for (int i = 0; i<eventoSeleccionado.getListaAsistentes().size();i++){
+                    if (eventoSeleccionado.getListaAsistentes().get(i).getNombre().equals(nmUsuario) && eventoSeleccionado.getListaAsistentes().get(i).getApellido().equals(apUsuario)){
+                        arrayAdapteAsistente = new ArrayAdapter<Usuario>(ingresarEvento.this, android.R.layout.simple_list_item_1,eventoSeleccionado.getListaAsistentes());
+                        lv_asistentes.setAdapter(arrayAdapteAsistente);
+                        btnAsistir.setVisibility(View.GONE);
+                    }else{
+                        btnAsistir.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        });
     }
 
+    private void participar(){
+        databaseReference.child("Usuario").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
+                    Usuario u = objSnapshot.getValue(Usuario.class);
+                    if (nmUsuario.equals(u.getNombre()) && apUsuario.equals(u.getApellido())){
+                        eventoSeleccionado.getListaAsistentes().add(u);
+                    }
+                    databaseReference.child("Evento").child(eventoSeleccionado.getUid()).setValue(eventoSeleccionado);
+                    arrayAdapteAsistente = new ArrayAdapter<Usuario>(ingresarEvento.this, android.R.layout.simple_list_item_1,eventoSeleccionado.getListaAsistentes());
+                    lv_asistentes.setAdapter(arrayAdapteAsistente);
+                    btnAsistir.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
     private void tiposUsuarios(){
@@ -86,7 +150,6 @@ public class InicioUsuario extends AppCompatActivity {
         switch (tipoUsuario){
 
             case "Presidente junta vecinos":{
-                tpUsuario.setText(tipoUsuario);
                 btnEvento.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -97,7 +160,6 @@ public class InicioUsuario extends AppCompatActivity {
             }
 
             case "Jefe de hogar":{
-                tpUsuario.setText(tipoUsuario);
                 btnEvento.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -108,7 +170,6 @@ public class InicioUsuario extends AppCompatActivity {
             }
 
             case "Miembro de hogar":{
-                tpUsuario.setText(tipoUsuario);
                 btnEvento.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -129,6 +190,7 @@ public class InicioUsuario extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String comentario = comentarioEvento.getText().toString();
                 String tipo = tipoEvento.getSelectedItem().toString();
+                String fecha = fechaEvento.getText().toString();
 
                 if (comentario.equals("") || tipo.equals("Tipo")){
                     validacion();
@@ -138,14 +200,17 @@ public class InicioUsuario extends AppCompatActivity {
                     e.setUid(UUID.randomUUID().toString());
                     e.setComentario(comentario);
                     e.setTipo(tipo);
+                    e.setFecha(fecha);
                     for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
                         Usuario u = objSnapshot.getValue(Usuario.class);
                         if (nmUsuario.equals(u.getNombre()) && apUsuario.equals(u.getApellido())){
+                            listaAsistentes.add(u);
+                            e.setListaAsistentes(listaAsistentes);
                             e.setUsuario(u);
                         }
                     }
                     databaseReference.child("Evento").child(e.getUid()).setValue(e);
-                    Toast.makeText(InicioUsuario.this, "Evento agregado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ingresarEvento.this, "Evento agregado", Toast.LENGTH_LONG).show();
                     limpiarCajas();
                 }
             }
@@ -164,7 +229,7 @@ public class InicioUsuario extends AppCompatActivity {
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
                     Evento e = objSnapshot.getValue(Evento.class);
                     listaEventos.add(e);
-                    arrayAdapteEvento = new ArrayAdapter<Evento>(InicioUsuario.this, android.R.layout.simple_list_item_1, listaEventos);
+                    arrayAdapteEvento = new ArrayAdapter<Evento>(ingresarEvento.this, android.R.layout.simple_list_item_1, listaEventos);
                     lv_Eventos.setAdapter(arrayAdapteEvento);
                 }
 
@@ -223,18 +288,21 @@ public class InicioUsuario extends AppCompatActivity {
     private void validacion() {
 
         String comentario = comentarioEvento.getText().toString();
+        String fecha = fechaEvento.getText().toString();
 
         if (comentario.equals("")) {
             comentarioEvento.setError("Requerido");
         } else if (tipoEvento.getSelectedItem().toString().equals("Tipo")) {
             Toast.makeText(this,"Debe seleccionar el tipo", Toast.LENGTH_LONG).show();
+        }else if (fecha.equals("")) {
+            fechaEvento.setError("Requerido");
         }
-
     }
 
     private void limpiarCajas() {
 
         comentarioEvento.setText("");
+        fechaEvento.setText("");
         tipoEvento.setSelection(0);
 
     }
