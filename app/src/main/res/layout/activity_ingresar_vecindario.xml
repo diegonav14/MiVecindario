@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_inicio"
     android:orientation="vertical"
     tools:context=".Administrador.ingresarVecindarios">
 
@@ -12,57 +13,67 @@
         layout="@layout/toolbar"
         />
 
-    <LinearLayout
+
+    <EditText
+        android:id="@+id/txt_nombreVecindario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="15dp">
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/Nombre"
+        android:textColorHint="#03521B"
+        android:textSize="20sp"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/lv_datosVecindario"
+        tools:layout_editor_absoluteX="0dp" />
 
-            <EditText
-                android:id="@+id/txt_nombreVecindario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/Nombre"
-                android:inputType="textPersonName"
-                android:paddingTop="15dp"
-                android:importantForAutofill="no" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/txt_direccionVecindario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/Direccion"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:paddingTop="15dp" />
-
-        </android.support.design.widget.TextInputLayout>
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/txt_direccionVecindario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/Direccion"
+        android:textColorHint="#03521B"
+        android:textSize="20sp"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombreVecindario"
+        tools:layout_editor_absoluteX="38dp" />
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
-        android:text="Lista de vecindarios"
-        android:textSize="30dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Lista de Vecindarios"
+        android:textColor="#03521B"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lv_datosVecindario">
-    </ListView>
+        android:id="@+id/lv_datosVecindario"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="#C3498820"
+        android:textColor="#03521B"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"></ListView>
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>

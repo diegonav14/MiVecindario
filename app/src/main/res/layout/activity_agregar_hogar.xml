@@ -1,95 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c9e265"
+    android:background="@drawable/fondo_inicio"
     android:orientation="vertical"
     tools:context=".Administrador.agregarHogares">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
-        />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
-    <LinearLayout
+
+    <EditText
+        android:id="@+id/txt_nombreHogar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="15dp">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/txt_nombreHogar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/Nombre"
-                android:inputType="textPersonName"
-                android:paddingTop="15dp"
-                 />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/txt_direccionHogar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/Direccion"
-                android:inputType="textPersonName"
-                android:paddingTop="15dp"
-                 />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/txt_comentarioHogar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/Comentario"
-                android:inputType="textPersonName"
-                android:paddingTop="15dp"
-                 />
-
-        </android.support.design.widget.TextInputLayout>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/Nombre"
+        android:textColorHint="#03521B"
+        android:textSize="20sp"
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/lv_datosHogar"
+        tools:layout_editor_absoluteX="16dp" />
 
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:id="@+id/spVecindarioHogar">
-        </Spinner>
+    <EditText
+        android:id="@+id/txt_direccionHogar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:textColorHint="#03521B"
+        android:textSize="20sp"
+        android:hint="@string/Direccion"
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombreHogar"
+        tools:layout_editor_absoluteX="50dp" />
 
 
-    </LinearLayout>
+    <EditText
+        android:id="@+id/txt_comentarioHogar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:textColorHint="#03521B"
+        android:textSize="20sp"
+        android:hint="@string/Comentario"
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_direccionHogar"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+    <Spinner
+        android:id="@+id/spVecindarioHogar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:minWidth="20sp"
+        android:textColor="#03521B"
+        app:layout_constraintTop_toBottomOf="@+id/txt_comentarioHogar"
+        tools:layout_editor_absoluteX="62dp"></Spinner>
+
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Lista de Hogares"
-        android:textSize="30dp" />
+        android:textColor="#03521B"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:ignore="MissingConstraints" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lv_datosHogar">
-    </ListView>
+        android:id="@+id/lv_datosHogar"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="#C3498820"
+        android:textColor="#03521B"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="MissingConstraints"></ListView>
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

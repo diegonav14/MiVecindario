@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.mivecindario.Administrador.InicioAdmin;
 import com.example.mivecindario.Modelos.Administrador;
@@ -100,6 +101,7 @@ public class IniciarSesion extends AppCompatActivity  {
                         String correoAdmin = editTextCorreo.getText().toString();
                         String passAdmin = editTextPass.getText().toString();
 
+
                         if (correoAdmin.equals(admin.getCorreo()) && passAdmin.equals(admin.getPassword())){
                             Intent intentAdmin = new Intent(IniciarSesion.this, InicioAdmin.class);
                             SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
@@ -110,6 +112,7 @@ public class IniciarSesion extends AppCompatActivity  {
                             startActivity(intentAdmin);
                             finish();
                         }
+
                     }
                 }
                 @Override
@@ -127,6 +130,7 @@ public class IniciarSesion extends AppCompatActivity  {
                         String correo = editTextCorreo.getText().toString();
                         String pass = editTextPass.getText().toString();
 
+
                         if (correo.equals(user.getCorreo()) && pass.equals(user.getPassword())) {
                             Intent intent = new Intent(IniciarSesion.this, ingresarEvento.class);
                             SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
@@ -139,6 +143,7 @@ public class IniciarSesion extends AppCompatActivity  {
                             finish();
                         }
                     }
+
                 }
 
                 @Override

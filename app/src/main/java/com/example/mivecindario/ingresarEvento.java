@@ -80,6 +80,7 @@ public class ingresarEvento extends AppCompatActivity {
         txt_fechaEvento = findViewById(R.id.txt_fechaEventoSeleccionado);
 
 
+
         ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(this,R.array.TipoEvento, android.R.layout.simple_spinner_dropdown_item);
 
         tipoEvento.setAdapter(adapterSpinner);

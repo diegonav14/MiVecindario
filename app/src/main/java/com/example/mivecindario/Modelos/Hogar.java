@@ -54,6 +54,6 @@ public class Hogar {
 
     @Override
     public String toString() {
-        return comentario;
+        return nombre;
     }
 }
