@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#c9e265"
+    android:background="@drawable/fondo_inicio"
     tools:context=".Administrador.InicioAdmin">
 
     <include
@@ -81,8 +81,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
-        android:text="Administrador"
-        android:textColor="#0C5247"
+        android:text="Administrar"
+        android:textColor="#03521B"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

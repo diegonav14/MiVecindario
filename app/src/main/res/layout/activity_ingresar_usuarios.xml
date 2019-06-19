@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/fondo_inicio"
     tools:context=".Administrador.ingresarUsuarios">
 
     <include
@@ -43,12 +44,17 @@
 
     <ListView
         android:id="@+id/lv_datosUsuarios"
-        android:layout_width="414dp"
-        android:layout_height="103dp"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="MissingConstraints"
-        android:background="#C0E265"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintVertical_bias="0.064"
+        tools:ignore="MissingConstraints">
 
     </ListView>
 
@@ -147,14 +153,17 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="414dp"
-        android:layout_height="39dp"
-        android:layout_margin="0dp"
-        android:background="#c9e265"
-        android:text="Lista de usuarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Usuarios"
         android:textAlignment="center"
-        android:textColor="#030000"
-        android:textSize="30dp"
+        android:textColor="#03521B"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:ignore="MissingConstraints" />
 
