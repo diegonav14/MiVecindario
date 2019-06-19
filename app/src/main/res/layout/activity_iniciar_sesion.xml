@@ -104,7 +104,7 @@
         tools:layout_conversion_wrapWidth="328" />
 
     <Button
-        android:id="@+id/btnRegistrarse"
+        android:id="@+id/btnContacto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -112,6 +112,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/boton_estilo"
         android:text="  Contacto  "
+        android:onClick="irContacto"
         android:textColor="#012B02"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"

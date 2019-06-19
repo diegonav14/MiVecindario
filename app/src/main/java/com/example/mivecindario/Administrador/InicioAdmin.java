@@ -39,7 +39,6 @@ public class InicioAdmin extends AppCompatActivity {
     }
 
 
-
     private void cargarPreferencias() {
         SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
         String nmAdmin = preferencias.getString("nombreAdmin","NoSesion");

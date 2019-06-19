@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.mivecindario.Administrador.InicioAdmin;
@@ -25,6 +26,7 @@ public class IniciarSesion extends AppCompatActivity  {
 
 
     EditText editTextCorreo, editTextPass;
+    Button btn_Contacto;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -116,17 +118,17 @@ public class IniciarSesion extends AppCompatActivity  {
                 }
             });
 
-            databaseReference.child("Usuario").addValueEventListener(new ValueEventListener() {
+            ValueEventListener valueEventListener = databaseReference.child("Usuario").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
+                    for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
                         Usuario user = objSnapshot.getValue(Usuario.class);
                         String correo = editTextCorreo.getText().toString();
                         String pass = editTextPass.getText().toString();
 
-                        if (correo.equals(user.getCorreo()) && pass.equals(user.getPassword())){
-                            Intent intent = new Intent (IniciarSesion.this, ingresarEvento.class);
+                        if (correo.equals(user.getCorreo()) && pass.equals(user.getPassword())) {
+                            Intent intent = new Intent(IniciarSesion.this, ingresarEvento.class);
                             SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferencias.edit();
                             editor.putString("nombreUsuario", user.getNombre());
@@ -144,7 +146,16 @@ public class IniciarSesion extends AppCompatActivity  {
 
                 }
             });
+
+
+
         }
+
+        public void irContacto(View v){
+        Intent intent = new Intent(IniciarSesion.this, Contacto.class);
+            startActivity(intent);
+         }
+
     }
 
 
