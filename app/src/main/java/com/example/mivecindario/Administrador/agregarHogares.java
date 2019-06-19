@@ -84,7 +84,7 @@ public class agregarHogares extends AppCompatActivity {
                 dirHogar.setText(hogarSeleccionado.getDireccion());
                 nomHogar.setText(hogarSeleccionado.getNombre());
                 comHogar.setText(hogarSeleccionado.getComentario());
-                for (int i = 0; i <= spinnerVecindario.getCount()+1; i++){
+                for (int i = 0; i <= spinnerVecindario.getCount(); i++){
                     if (spinnerVecindario.getItemAtPosition(i).toString().equals(hogarSeleccionado.getVecindario().getNombre())){
                         spinnerVecindario.setSelection(i);
                     }

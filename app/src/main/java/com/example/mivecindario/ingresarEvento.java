@@ -101,27 +101,23 @@ public class ingresarEvento extends AppCompatActivity {
                 txt_tipoEvento.setText(eventoSeleccionado.getTipo());
                 txt_fechaEvento.setText(eventoSeleccionado.getFecha());
                 txt_usuarioEvento.setText(eventoSeleccionado.getUsuario().getNombre()+" "+eventoSeleccionado.getUsuario().getApellido());
-                btnAsistir.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    participar();
-                    }
-                });
 
-                for (int i = 0; i<eventoSeleccionado.getListaAsistentes().size();i++){
+                for (int i = 0 ; i < eventoSeleccionado.getListaAsistentes().size(); i++){
                     if (eventoSeleccionado.getListaAsistentes().get(i).getNombre().equals(nmUsuario) && eventoSeleccionado.getListaAsistentes().get(i).getApellido().equals(apUsuario)){
                         arrayAdapteAsistente = new ArrayAdapter<Usuario>(ingresarEvento.this, android.R.layout.simple_list_item_1,eventoSeleccionado.getListaAsistentes());
                         lv_asistentes.setAdapter(arrayAdapteAsistente);
                         btnAsistir.setVisibility(View.GONE);
                     }else{
                         btnAsistir.setVisibility(View.VISIBLE);
+                        arrayAdapteAsistente = new ArrayAdapter<Usuario>(ingresarEvento.this, android.R.layout.simple_list_item_1,eventoSeleccionado.getListaAsistentes());
+                        lv_asistentes.setAdapter(arrayAdapteAsistente);
                     }
                 }
             }
         });
     }
 
-    private void participar(){
+    public void participar(View v){
         databaseReference.child("Usuario").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -133,7 +129,7 @@ public class ingresarEvento extends AppCompatActivity {
                     databaseReference.child("Evento").child(eventoSeleccionado.getUid()).setValue(eventoSeleccionado);
                     arrayAdapteAsistente = new ArrayAdapter<Usuario>(ingresarEvento.this, android.R.layout.simple_list_item_1,eventoSeleccionado.getListaAsistentes());
                     lv_asistentes.setAdapter(arrayAdapteAsistente);
-                    btnAsistir.setVisibility(View.GONE);
+                    btnAsistir.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -278,6 +274,7 @@ public class ingresarEvento extends AppCompatActivity {
                editor.apply();
                Intent intent = new Intent(this,IniciarSesion.class);
                startActivity(intent);
+               finish();
             }
             default:break;
 

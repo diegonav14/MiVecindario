@@ -152,6 +152,7 @@ public class datosUsuario extends AppCompatActivity {
                 editor.apply();
                 Intent intent = new Intent(this,IniciarSesion.class);
                 startActivity(intent);
+                finish();
             }
             default:break;
 
