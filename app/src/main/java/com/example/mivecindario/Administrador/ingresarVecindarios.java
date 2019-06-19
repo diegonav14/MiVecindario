@@ -45,7 +45,7 @@ public class ingresarVecindarios extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vecindario);
+        setContentView(R.layout.activity_ingresar_vecindario);
 
 
 

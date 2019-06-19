@@ -18,7 +18,7 @@
         app:showAsAction="always" />
 
     <item android:id="@+id/icon_login"
-        android:icon="@drawable/ic_login"
+        android:icon="@drawable/ic_session_out"
         android:title="Edit Done"
         app:showAsAction="always" />
 

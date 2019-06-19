@@ -14,12 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".datosUsuario"></activity>
+        <activity android:name=".datosUsuario" />
         <activity android:name=".editarHogar" />
         <activity android:name=".verVecindario" />
         <activity android:name=".ingresarEvento" />
         <activity android:name=".Administrador.ingresarMapaVecindario" />
-        <activity android:name=".Administrador.agregarEventos" />
         <activity android:name=".Administrador.agregarHogares" />
         <activity android:name=".Administrador.ingresarVecindarios" />
         <activity android:name=".Administrador.InicioAdmin" />

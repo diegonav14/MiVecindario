@@ -23,7 +23,6 @@
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:paddingTop="15dp"
-        android:textAlignment="viewStart"
         app:layout_constraintTop_toBottomOf="@+id/lv_datosUsuarios"
         tools:layout_editor_absoluteX="16dp" />
 

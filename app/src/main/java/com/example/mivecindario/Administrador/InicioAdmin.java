@@ -1,7 +1,6 @@
 package com.example.mivecindario.Administrador;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,7 +28,7 @@ public class InicioAdmin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicio);
+        setContentView(R.layout.activity_inicio_admin);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,7 +76,7 @@ public class InicioAdmin extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_admin,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -87,26 +86,14 @@ public class InicioAdmin extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.icon_add:{
-
-                break;
-            }
-
-            case R.id.icon_save:{
-                break;
-            }
-
-            case R.id.icon_delete:{
-                break;
-            }
-
-            case R.id.icon_login:{
+            case R.id.cerrarSesionAdmin:{
                 SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferencias.edit();
                 editor.clear();
                 editor.apply();
                 Intent intent = new Intent(this, IniciarSesion.class);
                 startActivity(intent);
+                finish();
             }
             default:break;
 

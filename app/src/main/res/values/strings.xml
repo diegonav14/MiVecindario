@@ -19,5 +19,6 @@
     <string name="eventos">Eventos</string>
     <string name="Fecha">Fecha</string>
     <string name="participar">Participar</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
