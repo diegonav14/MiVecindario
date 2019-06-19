@@ -1,5 +1,8 @@
 package com.example.mivecindario.Administrador;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.mivecindario.IniciarSesion;
 import com.example.mivecindario.Modelos.Hogar;
 import com.example.mivecindario.Modelos.Vecindario;
 import com.example.mivecindario.R;
@@ -70,6 +74,7 @@ public class agregarHogares extends AppCompatActivity {
         listV_hogar=findViewById(R.id.lv_datosHogar);
 
         listarDatos();
+        cargarPreferencias();
         spinnerVecindario();
 
         listV_hogar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -229,7 +234,13 @@ public class agregarHogares extends AppCompatActivity {
             }
 
             case R.id.icon_login:{
-
+                SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(this, IniciarSesion.class);
+                startActivity(intent);
+                finish();
             }
             default:break;
 
@@ -263,5 +274,12 @@ public class agregarHogares extends AppCompatActivity {
         comHogar.setText("");
         spinnerVecindario.setSelection(0);
 
+    }
+
+    private void cargarPreferencias() {
+        SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
+        String nmAdmin = preferencias.getString("nombreAdmin","NoSesion");
+        String apAdmin = preferencias.getString("apellidoAdmin","NoSesion");
+        toolbar.setSubtitle(nmAdmin+" "+apAdmin);
     }
 }

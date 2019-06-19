@@ -1,5 +1,8 @@
 package com.example.mivecindario.Administrador;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
+import com.example.mivecindario.IniciarSesion;
 import com.example.mivecindario.Modelos.Vecindario;
 import com.example.mivecindario.R;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +59,7 @@ public class ingresarVecindarios extends AppCompatActivity {
         nombreVec = findViewById(R.id.txt_nombreVecindario);
         direccionVec = findViewById(R.id.txt_direccionVecindario);
 
+        cargarPreferencias();
         inicializarFirebase();
         listarDatos();
 
@@ -152,7 +157,13 @@ public class ingresarVecindarios extends AppCompatActivity {
             }
 
             case R.id.icon_login:{
-
+                SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(this, IniciarSesion.class);
+                startActivity(intent);
+                finish();
             }
             default:break;
 
@@ -179,6 +190,13 @@ public class ingresarVecindarios extends AppCompatActivity {
         } else if (direccion.equals("")) {
             direccionVec.setError("Requerido");
         }
+    }
+
+    private void cargarPreferencias() {
+        SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
+        String nmAdmin = preferencias.getString("nombreAdmin","NoSesion");
+        String apAdmin = preferencias.getString("apellidoAdmin","NoSesion");
+        toolbar.setSubtitle(nmAdmin+" "+apAdmin);
     }
 
 }

@@ -1,6 +1,9 @@
 package com.example.mivecindario.Administrador;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.mivecindario.IniciarSesion;
 import com.example.mivecindario.Modelos.Hogar;
 import com.example.mivecindario.Modelos.Usuario;
 import com.example.mivecindario.R;
@@ -45,6 +49,8 @@ public class ingresarUsuarios extends AppCompatActivity {
 
     Usuario usuarioSeleccionado;
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,12 +74,13 @@ public class ingresarUsuarios extends AppCompatActivity {
             spinnerTipo.setAdapter(adapterSpinner);
             spinnerHogar.setAdapter(adapterSpinnerHogar);
 
-            Toolbar toolbar = findViewById(R.id.toolbar);
+            toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
             listV_usuarios=findViewById(R.id.lv_datosUsuarios);
 
             incializarFirebase();
+            cargarPreferencias();
             listarDatos();
             spinnerHogar();
 
@@ -92,7 +99,7 @@ public class ingresarUsuarios extends AppCompatActivity {
                             spinnerTipo.setSelection(i);
                         }
                     }
-                    for (int e = 0; e <= spinnerHogar.getCount()+1; e++){
+                    for (int e = 0; e <= spinnerHogar.getCount(); e++){
                         if (spinnerHogar.getItemAtPosition(e).toString().equals(usuarioSeleccionado.getHogar().getNombre())){
                             spinnerHogar.setSelection(e);
                         }
@@ -254,7 +261,13 @@ public class ingresarUsuarios extends AppCompatActivity {
             }
 
             case R.id.icon_login:{
-
+                SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(this, IniciarSesion.class);
+                startActivity(intent);
+                finish();
             }
             default:break;
 
@@ -309,5 +322,12 @@ public class ingresarUsuarios extends AppCompatActivity {
             Toast.makeText(this,"Debe seleccionar el Hogar", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    private void cargarPreferencias() {
+        SharedPreferences preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE);
+        String nmAdmin = preferencias.getString("nombreAdmin","NoSesion");
+        String apAdmin = preferencias.getString("apellidoAdmin","NoSesion");
+        toolbar.setSubtitle(nmAdmin+" "+apAdmin);
     }
 }
